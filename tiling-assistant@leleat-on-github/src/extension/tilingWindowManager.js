@@ -932,6 +932,26 @@ export class TilingWindowManager {
                 const { height } = bottom ?? workArea.getUnitAt(1, workArea.height / 2, Orientation.H);
                 const result = new Rect(workArea.x2 - width, workArea.y2 - height, width, height);
                 return getTile(result);
+            } case 'tile-left-third': {
+                const left = screenRects.find(r => r.x === workArea.x && r.width !== workArea.width);
+                const { width } = left ?? workArea.getUnitAt(0, workArea.width / 3, Orientation.V);
+                const result = new Rect(workArea.x, workArea.y, width, workArea.height);
+                return getTile(result);
+            } case 'tile-middle-third': {
+                const leftThird = workArea.getUnitAt(0, workArea.width / 3, Orientation.V);
+                const middleThird = workArea.getUnitAt(1, workArea.width / 3, Orientation.V);
+                const result = new Rect(
+                    workArea.x + leftThird.width,
+                    workArea.y,
+                    middleThird.width,
+                    workArea.height
+                );
+                return getTile(result);
+            } case 'tile-right-third': {
+                const right = screenRects.find(r => r.x2 === workArea.x2 && r.width !== workArea.width);
+                const { width } = right ?? workArea.getUnitAt(2, workArea.width / 3, Orientation.V);
+                const result = new Rect(workArea.x2 - width, workArea.y, width, workArea.height);
+                return getTile(result);
             }
         }
     }
@@ -969,6 +989,15 @@ export class TilingWindowManager {
             case 'tile-bottomright-quarter':
             case 'tile-bottomright-quarter-ignore-ta':
                 return workArea.getUnitAt(1, workArea.width / 2, Orientation.V).getUnitAt(1, workArea.height / 2, Orientation.H);
+            case 'tile-left-third':
+            case 'tile-left-third-ignore-ta':
+                return workArea.getUnitAt(0, workArea.width / 3, Orientation.V);
+            case 'tile-middle-third':
+            case 'tile-middle-third-ignore-ta':
+                return workArea.getUnitAt(1, workArea.width / 3, Orientation.V);
+            case 'tile-right-third':
+            case 'tile-right-third-ignore-ta':
+                return workArea.getUnitAt(2, workArea.width / 3, Orientation.V);
         }
     }
 

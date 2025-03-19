@@ -138,6 +138,24 @@
 		<key name="tile-bottomright-quarter-ignore-ta" type="as">
 			<default>[]</default>
 		</key>
+		<key name="tile-left-third" type="as">
+			<default>[]</default>
+		</key>
+		<key name="tile-middle-third" type="as">
+			<default>[]</default>
+		</key>
+		<key name="tile-right-third" type="as">
+			<default>[]</default>
+		</key>
+		<key name="tile-left-third-ignore-ta" type="as">
+			<default>[]</default>
+		</key>
+		<key name="tile-middle-third-ignore-ta" type="as">
+			<default>[]</default>
+		</key>
+		<key name="tile-right-third-ignore-ta" type="as">
+			<default>[]</default>
+		</key>
 		<!-- Layouts Page -->
 		<!-- Hidden by default unless the advanced / experimental settings are enabled.
 		The number of layouts / shortcuts are hardcoded / limited to 20 -->

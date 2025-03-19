@@ -131,6 +131,9 @@ export class Shortcuts {
             'tile-topright-quarter',
             'tile-bottomleft-quarter',
             'tile-bottomright-quarter',
+            'tile-left-third',
+            'tile-middle-third',
+            'tile-right-third',
             'tile-top-half-ignore-ta',
             'tile-bottom-half-ignore-ta',
             'tile-left-half-ignore-ta',
@@ -139,6 +142,9 @@ export class Shortcuts {
             'tile-topright-quarter-ignore-ta',
             'tile-bottomleft-quarter-ignore-ta',
             'tile-bottomright-quarter-ignore-ta',
+            'tile-left-third-ignore-ta',
+            'tile-middle-third-ignore-ta',
+            'tile-right-third-ignore-ta',
             'debugging-show-tiled-rects',
             'debugging-free-rects'
         ];

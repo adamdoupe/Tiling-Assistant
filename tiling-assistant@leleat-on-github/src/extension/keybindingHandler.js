@@ -205,8 +205,9 @@ export default class TilingKeybindingHandler {
         } else if (['tile-top-half-ignore-ta', 'tile-bottom-half-ignore-ta',
             'tile-left-half-ignore-ta', 'tile-right-half-ignore-ta',
             'tile-topleft-quarter-ignore-ta', 'tile-topright-quarter-ignore-ta',
-            'tile-bottomleft-quarter-ignore-ta',
-            'tile-bottomright-quarter-ignore-ta'].includes(shortcutName)
+            'tile-bottomleft-quarter-ignore-ta', 'tile-bottomright-quarter-ignore-ta',
+            'tile-left-third-ignore-ta', 'tile-middle-third-ignore-ta',
+            'tile-right-third-ignore-ta'].includes(shortcutName)
         ) {
             const workArea = new Rect(window.get_work_area_current_monitor());
             const rect = Twm.getDefaultTileFor(shortcutName, workArea);

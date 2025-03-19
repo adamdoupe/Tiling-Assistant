@@ -991,12 +991,15 @@ export class TilingWindowManager {
                 return workArea.getUnitAt(1, workArea.width / 2, Orientation.V).getUnitAt(1, workArea.height / 2, Orientation.H);
             case 'tile-left-third':
             case 'tile-left-third-ignore-ta':
+                log(`[Tiling Assistant DEBUG] Processing left-third: ${shortcut}`);
                 return workArea.getUnitAt(0, workArea.width / 3, Orientation.V);
             case 'tile-middle-third':
             case 'tile-middle-third-ignore-ta':
+                log(`[Tiling Assistant DEBUG] Processing middle-third: ${shortcut}`);
                 return workArea.getUnitAt(1, workArea.width / 3, Orientation.V);
             case 'tile-right-third':
             case 'tile-right-third-ignore-ta':
+                log(`[Tiling Assistant DEBUG] Processing right-third: ${shortcut}`);
                 return workArea.getUnitAt(2, workArea.width / 3, Orientation.V);
         }
     }

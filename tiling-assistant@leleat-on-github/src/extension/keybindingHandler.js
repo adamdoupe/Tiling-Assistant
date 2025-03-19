@@ -34,6 +34,14 @@ export default class TilingKeybindingHandler {
      * @param {string} shortcutName
      */
     async _onCustomKeybindingPressed(shortcutName) {
+        // Debug log the shortcut that was pressed
+        log(`[Tiling Assistant] Keybinding pressed: ${shortcutName}`);
+        
+        // Additional debug for thirds tiling
+        if (shortcutName.includes('third')) {
+            log(`[Tiling Assistant DEBUG] Thirds tiling shortcut detected: ${shortcutName}`);
+        }
+        
         // Debugging
         const debugging = ['debugging-show-tiled-rects', 'debugging-free-rects'];
         if (debugging.includes(shortcutName)) {
@@ -209,16 +217,20 @@ export default class TilingKeybindingHandler {
             'tile-left-third-ignore-ta', 'tile-middle-third-ignore-ta',
             'tile-right-third-ignore-ta'].includes(shortcutName)
         ) {
+            log(`[Tiling Assistant] Processing ignore-ta shortcut: ${shortcutName}`);
             const workArea = new Rect(window.get_work_area_current_monitor());
             const rect = Twm.getDefaultTileFor(shortcutName, workArea);
+            log(`[Tiling Assistant] Tiling rect (ignore-ta): x=${rect.x}, y=${rect.y}, width=${rect.width}, height=${rect.height}`);
             Twm.toggleTiling(window, rect, { ignoreTA: true });
         // Tile a window
         } else {
+            log(`[Tiling Assistant] Processing regular shortcut: ${shortcutName}`);
             const dynamicSetting = Settings.getInt('dynamic-keybinding-behavior');
             const windowsStyle = DynamicKeybindings.TILING_STATE_WINDOWS;
             const isWindowsStyle = dynamicSetting === windowsStyle;
             const workArea = new Rect(window.get_work_area_current_monitor());
             const rect = Twm.getTileFor(shortcutName, workArea, window.get_monitor());
+            log(`[Tiling Assistant] Tiling rect (regular): x=${rect.x}, y=${rect.y}, width=${rect.width}, height=${rect.height}`);
 
             switch (dynamicSetting) {
                 case DynamicKeybindings.FOCUS:

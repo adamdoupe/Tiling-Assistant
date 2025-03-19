@@ -775,6 +775,29 @@
       </object>
     </child>
     <!-- ======================================================================================== -->
+    <!-- = Group: Thirds Tiling ================================================================= -->
+    <!-- ======================================================================================== -->
+    <child>
+      <object class="AdwPreferencesGroup">
+        <property name="title" translatable="yes" comments="Translators: This is a header for a preference group in the 'Keybindings' tab to tile windows to thirds">Thirds Tiling</property>
+        <child>
+          <object class="ShortcutListener" id="tile_left_third">
+            <property name="title" translatable="yes" comments="Translators: This is a keybinding in the 'Thirds Tiling' preference group in the 'Keybindings' tab to tile window to the left third">Tile to left third</property>
+          </object>
+        </child>
+        <child>
+          <object class="ShortcutListener" id="tile_middle_third">
+            <property name="title" translatable="yes" comments="Translators: This is a keybinding in the 'Thirds Tiling' preference group in the 'Keybindings' tab to tile window to the middle third">Tile to middle third</property>
+          </object>
+        </child>
+        <child>
+          <object class="ShortcutListener" id="tile_right_third">
+            <property name="title" translatable="yes" comments="Translators: This is a keybinding in the 'Thirds Tiling' preference group in the 'Keybindings' tab to tile window to the right third">Tile to right third</property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <!-- ======================================================================================== -->
     <!-- = Group: Edge Tiling - Ignore TA ======================================================= -->
     <!-- ======================================================================================== -->
     <child>
@@ -834,6 +857,33 @@
         <child>
           <object class="ShortcutListener" id="tile_bottomright_quarter_ignore_ta">
             <property name="title" translatable="yes" comments="Translators: This is a keybinding in the 'Corner Tiling without Tiling Assistant' preference group in the 'Keybindings' tab to tile window to the bottom right quarter without spawning a Tiling Popup">Tile to bottom-right</property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <!-- ======================================================================================== -->
+    <!-- = Group: Thirds Tiling - Ignore TA ===================================================== -->
+    <!-- ======================================================================================== -->
+    <child>
+      <object class="AdwPreferencesGroup">
+        <property name="title" translatable="yes" comments="Translators: This is a header for a preference group in the 'Keybindings' tab to tile windows to thirds without spawning a Tiling Popup">Thirds Tiling without Tiling Assistant</property>
+        <property name="visible"
+                  bind-source="enable_advanced_experimental_features"
+                  bind-property="active"
+                  bind-flags="sync-create"/>
+        <child>
+          <object class="ShortcutListener" id="tile_left_third_ignore_ta">
+            <property name="title" translatable="yes" comments="Translators: This is a keybinding in the 'Thirds Tiling without Tiling Assistant' preference group in the 'Keybindings' tab to tile window to the left third without spawning a Tiling Popup">Tile to left third</property>
+          </object>
+        </child>
+        <child>
+          <object class="ShortcutListener" id="tile_middle_third_ignore_ta">
+            <property name="title" translatable="yes" comments="Translators: This is a keybinding in the 'Thirds Tiling without Tiling Assistant' preference group in the 'Keybindings' tab to tile window to the middle third without spawning a Tiling Popup">Tile to middle third</property>
+          </object>
+        </child>
+        <child>
+          <object class="ShortcutListener" id="tile_right_third_ignore_ta">
+            <property name="title" translatable="yes" comments="Translators: This is a keybinding in the 'Thirds Tiling without Tiling Assistant' preference group in the 'Keybindings' tab to tile window to the right third without spawning a Tiling Popup">Tile to right third</property>
           </object>
         </child>
       </object>

@@ -278,10 +278,24 @@ export default class TilingKeybindingHandler {
                 direction = Direction.S;
                 break;
             case 'tile-left-half':
+            case 'tile-left-third':
                 direction = Direction.W;
                 break;
             case 'tile-right-half':
+            case 'tile-right-third':
                 direction = Direction.E;
+                break;
+            case 'tile-middle-third':
+                // Middle third has no direct analogue in the Direction enum
+                // We'll handle this case specially below
+                break;
+        }
+
+        // Special handling for middle-third since it doesn't map to a cardinal direction
+        if (shortcutName === 'tile-middle-third') {
+            const rect = Twm.getTileFor(shortcutName, workArea, window.get_monitor());
+            Twm.toggleTiling(window, rect);
+            return;
         }
 
         const nearestWindow = Twm.getNearestWindow(
@@ -401,6 +415,24 @@ export default class TilingKeybindingHandler {
             wRect.y !== workArea.y &&
             wRect.width === workArea.width &&
             wRect.y2 === workArea.y2;
+        // Adding detection for the thirds tiling states
+        const isLeftThird =
+            wRect.x === workArea.x &&
+            wRect.y === workArea.y &&
+            Math.round(wRect.width) === Math.round(workArea.width / 3) &&
+            wRect.height === workArea.height;
+        const isMiddleThird =
+            wRect.x > workArea.x &&
+            wRect.x2 < workArea.x2 &&
+            wRect.y === workArea.y &&
+            Math.round(wRect.width) === Math.round(workArea.width / 3) &&
+            wRect.height === workArea.height;
+        const isRightThird =
+            wRect.x > workArea.x &&
+            wRect.x2 === workArea.x2 &&
+            wRect.y === workArea.y &&
+            Math.round(wRect.width) === Math.round(workArea.width / 3) &&
+            wRect.height === workArea.height;
         const isTopLeftQuarter =
             wRect.x === workArea.x &&
             wRect.y === workArea.y &&
@@ -544,6 +576,63 @@ export default class TilingKeybindingHandler {
                     isWindowsStyle ? window.minimize() : Twm.toggleTiling(window, rect);
                     return;
             }
+        } else if (isLeftThird) {
+            switch (shortcutName) {
+                case 'tile-middle-third':
+                    rect = Twm.getTileFor('tile-middle-third', workArea, window.get_monitor());
+                    Twm.toggleTiling(window, rect);
+                    return;
+                case 'tile-right-third':
+                    rect = Twm.getTileFor('tile-right-third', workArea, window.get_monitor());
+                    Twm.toggleTiling(window, rect);
+                    return;
+                case 'tile-top-half':
+                    rect = Twm.getTileFor('tile-topleft-quarter', workArea, window.get_monitor());
+                    Twm.toggleTiling(window, rect);
+                    return;
+                case 'tile-bottom-half':
+                    rect = Twm.getTileFor('tile-bottomleft-quarter', workArea, window.get_monitor());
+                    Twm.toggleTiling(window, rect);
+                    return;
+            }
+        } else if (isMiddleThird) {
+            switch (shortcutName) {
+                case 'tile-left-third':
+                    rect = Twm.getTileFor('tile-left-third', workArea, window.get_monitor());
+                    Twm.toggleTiling(window, rect);
+                    return;
+                case 'tile-right-third':
+                    rect = Twm.getTileFor('tile-right-third', workArea, window.get_monitor());
+                    Twm.toggleTiling(window, rect);
+                    return;
+                case 'tile-top-half':
+                    // No direct analogue for middle-top, untile instead
+                    Twm.untile(window);
+                    return;
+                case 'tile-bottom-half':
+                    // No direct analogue for middle-bottom, untile instead
+                    Twm.untile(window);
+                    return;
+            }
+        } else if (isRightThird) {
+            switch (shortcutName) {
+                case 'tile-left-third':
+                    rect = Twm.getTileFor('tile-left-third', workArea, window.get_monitor());
+                    Twm.toggleTiling(window, rect);
+                    return;
+                case 'tile-middle-third':
+                    rect = Twm.getTileFor('tile-middle-third', workArea, window.get_monitor());
+                    Twm.toggleTiling(window, rect);
+                    return;
+                case 'tile-top-half':
+                    rect = Twm.getTileFor('tile-topright-quarter', workArea, window.get_monitor());
+                    Twm.toggleTiling(window, rect);
+                    return;
+                case 'tile-bottom-half':
+                    rect = Twm.getTileFor('tile-bottomright-quarter', workArea, window.get_monitor());
+                    Twm.toggleTiling(window, rect);
+                    return;
+            }
         }
 
         Twm.toggleTiling(window, Twm.getTileFor(shortcutName, workArea, window.get_monitor()));
@@ -577,15 +666,25 @@ export default class TilingKeybindingHandler {
                 direction = Direction.S;
                 break;
             case 'tile-left-half':
+            case 'tile-left-third':
                 direction = Direction.W;
                 break;
             case 'tile-right-half':
+            case 'tile-right-third':
                 direction = Direction.E;
+                break;
+            case 'tile-middle-third':
+                // Middle third has no direct cardinal direction
+                break;
         }
 
         if (direction) {
             const neighbor = window.tiledRect.getNeighbor(direction, favoriteLayout);
             Twm.tile(window, neighbor, { openTilingPopup: false });
+        } else if (shortcutName === 'tile-middle-third') {
+            // Special handling for middle third
+            const rect = Twm.getTileFor(shortcutName, workArea, window.get_monitor());
+            Twm.toggleTiling(window, rect);
         } else {
             toggleTiling();
         }

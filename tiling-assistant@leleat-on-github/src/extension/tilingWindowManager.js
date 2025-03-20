@@ -965,6 +965,25 @@ export class TilingWindowManager {
                 const { width } = right ?? workArea.getUnitAt(2, workArea.width / 3, Orientation.V);
                 const result = new Rect(workArea.x2 - width, workArea.y, width, workArea.height);
                 return getTile(result);
+            } case 'tile-left-twothirds': {
+                const twoThirdsWidth = Math.floor(workArea.width * 2 / 3);
+                const result = new Rect(workArea.x, workArea.y, twoThirdsWidth, workArea.height);
+                return getTile(result);
+            } case 'tile-center-twothirds': {
+                const thirdWidth = Math.floor(workArea.width / 3);
+                const twoThirdsWidth = Math.floor(workArea.width * 2 / 3);
+                const result = new Rect(
+                    workArea.x + Math.floor(thirdWidth / 2),
+                    workArea.y,
+                    twoThirdsWidth,
+                    workArea.height
+                );
+                return getTile(result);
+            } case 'tile-right-twothirds': {
+                const thirdWidth = Math.floor(workArea.width / 3);
+                const twoThirdsWidth = Math.floor(workArea.width * 2 / 3);
+                const result = new Rect(workArea.x2 - twoThirdsWidth, workArea.y, twoThirdsWidth, workArea.height);
+                return getTile(result);
             }
         }
     }
@@ -1011,6 +1030,27 @@ export class TilingWindowManager {
             case 'tile-right-third':
             case 'tile-right-third-ignore-ta':
                 return workArea.getUnitAt(2, workArea.width / 3, Orientation.V);
+            case 'tile-left-twothirds':
+            case 'tile-left-twothirds-ignore-ta': {
+                const twoThirdsWidth = Math.floor(workArea.width * 2 / 3);
+                return new Rect(workArea.x, workArea.y, twoThirdsWidth, workArea.height);
+            }
+            case 'tile-center-twothirds':
+            case 'tile-center-twothirds-ignore-ta': {
+                const thirdWidth = Math.floor(workArea.width / 3);
+                const twoThirdsWidth = Math.floor(workArea.width * 2 / 3);
+                return new Rect(
+                    workArea.x + Math.floor(thirdWidth / 2),
+                    workArea.y,
+                    twoThirdsWidth,
+                    workArea.height
+                );
+            }
+            case 'tile-right-twothirds':
+            case 'tile-right-twothirds-ignore-ta': {
+                const twoThirdsWidth = Math.floor(workArea.width * 2 / 3);
+                return new Rect(workArea.x2 - twoThirdsWidth, workArea.y, twoThirdsWidth, workArea.height);
+            }
         }
     }
 

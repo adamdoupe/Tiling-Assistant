@@ -767,6 +767,21 @@
             <property name="title" translatable="yes" comments="Translators: This is a keybinding in the 'Thirds Tiling' preference group in the 'Keybindings' tab to tile window to the right third">Tile to right third</property>
           </object>
         </child>
+        <child>
+          <object class="ShortcutListener" id="tile_left_twothirds">
+            <property name="title" translatable="yes" comments="Translators: This is a keybinding in the 'Thirds Tiling' preference group in the 'Keybindings' tab to tile window to the left two-thirds">Tile to left two-thirds</property>
+          </object>
+        </child>
+        <child>
+          <object class="ShortcutListener" id="tile_center_twothirds">
+            <property name="title" translatable="yes" comments="Translators: This is a keybinding in the 'Thirds Tiling' preference group in the 'Keybindings' tab to tile window to the center two-thirds">Tile to center two-thirds</property>
+          </object>
+        </child>
+        <child>
+          <object class="ShortcutListener" id="tile_right_twothirds">
+            <property name="title" translatable="yes" comments="Translators: This is a keybinding in the 'Thirds Tiling' preference group in the 'Keybindings' tab to tile window to the right two-thirds">Tile to right two-thirds</property>
+          </object>
+        </child>
       </object>
     </child>
     <!-- ======================================================================================== -->
@@ -856,6 +871,21 @@
         <child>
           <object class="ShortcutListener" id="tile_right_third_ignore_ta">
             <property name="title" translatable="yes" comments="Translators: This is a keybinding in the 'Thirds Tiling without Tiling Assistant' preference group in the 'Keybindings' tab to tile window to the right third without spawning a Tiling Popup">Tile to right third</property>
+          </object>
+        </child>
+        <child>
+          <object class="ShortcutListener" id="tile_left_twothirds_ignore_ta">
+            <property name="title" translatable="yes" comments="Translators: This is a keybinding in the 'Thirds Tiling without Tiling Assistant' preference group in the 'Keybindings' tab to tile window to the left two-thirds without spawning a Tiling Popup">Tile to left two-thirds</property>
+          </object>
+        </child>
+        <child>
+          <object class="ShortcutListener" id="tile_center_twothirds_ignore_ta">
+            <property name="title" translatable="yes" comments="Translators: This is a keybinding in the 'Thirds Tiling without Tiling Assistant' preference group in the 'Keybindings' tab to tile window to the center two-thirds without spawning a Tiling Popup">Tile to center two-thirds</property>
+          </object>
+        </child>
+        <child>
+          <object class="ShortcutListener" id="tile_right_twothirds_ignore_ta">
+            <property name="title" translatable="yes" comments="Translators: This is a keybinding in the 'Thirds Tiling without Tiling Assistant' preference group in the 'Keybindings' tab to tile window to the right two-thirds without spawning a Tiling Popup">Tile to right two-thirds</property>
           </object>
         </child>
       </object>

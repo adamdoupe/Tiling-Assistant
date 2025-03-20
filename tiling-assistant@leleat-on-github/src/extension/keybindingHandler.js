@@ -207,7 +207,8 @@ export default class TilingKeybindingHandler {
             'tile-topleft-quarter-ignore-ta', 'tile-topright-quarter-ignore-ta',
             'tile-bottomleft-quarter-ignore-ta', 'tile-bottomright-quarter-ignore-ta',
             'tile-left-third-ignore-ta', 'tile-middle-third-ignore-ta',
-            'tile-right-third-ignore-ta'].includes(shortcutName)
+            'tile-right-third-ignore-ta', 'tile-left-twothirds-ignore-ta',
+            'tile-center-twothirds-ignore-ta', 'tile-right-twothirds-ignore-ta'].includes(shortcutName)
         ) {
             const workArea = new Rect(window.get_work_area_current_monitor());
             const rect = Twm.getDefaultTileFor(shortcutName, workArea);
